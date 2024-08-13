@@ -13,8 +13,8 @@ document.getElementById('calculate_button').addEventListener('click', ()=> {
 
         const sigmaVv = Math.pow(10.0, sigmaVvDb / 10);
         const sigmaVh = Math.pow(10.0, sigmaVhDb / 10);
-        const theta = Math.toRadians(thetaDeg);
-        // const theta =  thetaDeg*(Math.PI/180);
+        // const theta = Math.toRadians(thetaDeg);
+        const theta =  thetaDeg*(Math.PI/180);
         const epsilon = 10.0; // Simplified for demonstration
         const s = 0.05; // Simplified for demonstration
 
