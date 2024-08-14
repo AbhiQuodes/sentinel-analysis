@@ -106,7 +106,7 @@ document.getElementById('calculate_button').addEventListener('click', ()=> {
             },
 
             options:{
-                responsive:false,
+                // responsive:false,
                 layout:{
                     padding:{
                         left:50,
