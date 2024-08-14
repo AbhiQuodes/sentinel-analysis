@@ -1,5 +1,8 @@
+// const graph= require('https://cdn.jsdelivr.net/npm/chart.js');
+let graph=document.querySelector('#graph_analysis').getContext('2d');
+
 document.getElementById('calculate_button').addEventListener('click', ()=> {
-    try {
+    // try {
         const A = 0.1;
         const B = 1.0;
         const C = 2.0;
@@ -34,10 +37,160 @@ document.getElementById('calculate_button').addEventListener('click', ()=> {
 
         document.getElementById('result').innerText = results;
 
-    } catch (e) {
-        document.getElementById('result').innerText = `An error occurred: ${e.message}`;
-    }
+
+        // graph plot code
+        let myChart = new Chart(graph,{
+            //specifying the type of graph.
+            type:'bar',
+            data :{
+                  datasets:[
+                    {
+                        label :'Measured Sigma VV',                    
+                        data:[
+                            {x:theta,y:sigmaVv}
+                        ],
+                        backgroundColor:'rgba(75,192,192,1)',
+                        backgroundColor:'rgba(75,392,192,1)',
+                        barThickness:50,
+                        borderWidth:2,
+                        pointRadius:5
+                        
+                    },
+
+                    {
+                        label :'Modeled Sigma VV',                    
+                        data:[
+                            {x:theta,y:modelSigmaVv}
+                        ],
+                        backgroundColor:'rgba(153,102,255,1)',
+                        backgroundColor:'rgba(153,102,255,1)',
+                        borderWidth:2,
+                        barThickness:50,
+                        pointRadius:5
+
+                    },
+
+                    
+                    {
+                        label :'Measured Sigma VH',                    
+                        data:[
+                            {x:theta,y:sigmaVh}
+                        ],
+                        backgroundColor:'rgba(255,159,64,1)',
+                        backgroundColor:'rgba(255,159,64,1)',
+                        borderWidth:2,
+                        barThickness:50,
+                        pointRadius:5
+
+                    },
+
+
+                    
+                    {
+                        label :'Modeled Sigma VV',                    
+                        data:[
+                            {x:theta,y:modelSigmaVh}
+                        ],
+                        backgroundColor:'rgba(255,99,132,1)',
+                        backgroundColor:'rgba(255,99,132,1)',
+                        borderWidth:2,
+                        pointRadius:5,
+                        barThickness:50
+                        
+
+                    },
+
+
+                    
+                  ]
+            },
+
+            options:{
+                // responsive:false,
+                layout:{
+                    padding:{
+                        left:50,
+                        right:50,
+                        top:50,
+                        bottom:50,
+                    },
+        
+                    // backgroundColor:'white',
+                    tootips:{
+                        enabled:true,
+
+                    },
+                   
+                },
+
+                scales:{
+                    x:{
+                        title:{
+                               display:true,
+                               text:'Incidence Angle (radians)',
+                             font:{
+                                size:20,
+                                color:'black',
+                                width:5
+                             }
+                        },
+
+                        ticks:{
+                            font:{
+                                weight:'bold'
+                            },
+                        },
+
+                        rid:{
+                            color:'rgba(0,0,0,0.1)'
+                        }
+                        
+                        
+
+                        
+                    },
+
+                    y:{
+                        title:{
+                               display:true,
+                               text:'Sigma Values',
+                               font:{
+                                size:20,
+                                color:'black',
+                                width:5
+                             }
+                        },
+                        ticks:{
+                            font:{
+                                weight:'bold'
+                            },
+                        },
+                        type:'logarithmic'
+                    }
+
+                    
+                },
+                plugins:{
+
+                    legend:{
+                        display:true,
+                        position:"bottom",
+                        align:'center',
+                        boxWidth:20,
+                        labels:{
+                            fontSize:20
+                        },
+                     
+                    }
+                }
+            }
+        })
+      
+    // } catch (e) {
+    //     document.getElementById('result').innerText = `An error occurred: ${e.message}`;
+    // }
 });
+document.querySelector('#graph_analysis').style.backgroundColor='#ffffff';
 
 document.getElementById('exit_button').addEventListener('click', function() {
     window.close();
