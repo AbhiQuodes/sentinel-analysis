@@ -106,7 +106,8 @@ document.getElementById('calculate_button').addEventListener('click', ()=> {
             },
 
             options:{
-                // responsive:false,
+                responsive:false,
+                maintainAspectRatio:false,
                 layout:{
                     padding:{
                         left:50,
@@ -190,7 +191,7 @@ document.getElementById('calculate_button').addEventListener('click', ()=> {
     //     document.getElementById('result').innerText = `An error occurred: ${e.message}`;
     // }
 });
-document.querySelector('#graph_analysis').style.backgroundColor='#ffffff';
+// document.querySelector('#graph_analysis').style.backgroundColor='#ffffff';
 
 document.getElementById('exit_button').addEventListener('click', function() {
     window.close();
